@@ -1,5 +1,7 @@
 // ignore_for_file: use_super_parameters, sized_box_for_whitespace, prefer_const_constructors, unnecessary_brace_in_string_interps, avoid_print, prefer_final_fields, unused_field, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -52,6 +54,9 @@ class _QuizAppState extends State<QuizApp> {
         wrong++;
       }
       optionSelected = true;
+    });
+      Timer(Duration(milliseconds: 1000), () {
+      generateNextQuestion();
     });
   }
 
@@ -251,18 +256,6 @@ class _QuizAppState extends State<QuizApp> {
                         isWrongSelected: optionSelected && optionValues[3] != c,
                       ),
                     ]),
-              ),
-            ),
-            Positioned(
-              bottom: 20,
-              right: 20,
-              child: FloatingActionButton(
-                onPressed: generateNextQuestion,
-                backgroundColor: Color(0xffa80aa0),
-                child: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: Colors.white,
-                ),
               ),
             ),
           ],
