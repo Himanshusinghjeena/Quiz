@@ -7,6 +7,7 @@ import 'dart:math';
 
 import 'package:quiz_app/option.dart';
 
+
 class QuizApp extends StatefulWidget {
   const QuizApp({Key? key}) : super(key: key);
 
@@ -55,7 +56,7 @@ class _QuizAppState extends State<QuizApp> {
       }
       optionSelected = true;
     });
-      Timer(Duration(milliseconds: 1000), () {
+    Timer(Duration(milliseconds: 400), () {
       generateNextQuestion();
     });
   }
@@ -78,10 +79,13 @@ class _QuizAppState extends State<QuizApp> {
         context: context,
         builder: (context) => AlertDialog(
               content: SizedBox(
-                height: 60,
+                height: 120,
                 width: 50,
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 30,
+                    ),
                     Text("Your Score is $points"),
                     Text("Correct Answers: $correct"),
                     Text("Wrong Answers: $wrong")
@@ -94,7 +98,10 @@ class _QuizAppState extends State<QuizApp> {
                     backgroundColor: Color(0xffa80aa0),
                     foregroundColor: Colors.white,
                   ),
-                  child: Text("OK"),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(color: Colors.black),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.pushReplacement(
